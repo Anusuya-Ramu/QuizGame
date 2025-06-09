@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class QuizeGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Questions, options, and answers
+        String[] questions = {
+            "1. What is the capital of France?",
+            "2. Which planet is known as the Red Planet?",
+            "3. Who wrote 'Romeo and Juliet'?",
+            "4. What is 9 x 9?"
+        };
+
+        String[][] options = {
+            {"a) Berlin", "b) Madrid", "c) Paris", "d) Rome"},
+            {"a) Earth", "b) Mars", "c) Venus", "d) Jupiter"},
+            {"a) Charles Dickens", "b) William Shakespeare", "c) Mark Twain", "d) Jane Austen"},
+            {"a) 81", "b) 72", "c) 99", "d) 89"}
+        };
+
+        char[] answers = {'c', 'b', 'b', 'a'};
+        int score = 0;
+
+        System.out.println("🎮 Welcome to the Quiz Game!");
+        System.out.println("----------------------------------");
+
+        // Loop through all questions
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (String option : options[i]) {
+                System.out.println(option);
+            }
+
+            System.out.print("Your answer (a/b/c/d): ");
+            char userAnswer = sc.next().charAt(0);
+
+            if (Character.toLowerCase(userAnswer) == answers[i]) {
+                System.out.println("✅ Correct!\n");
+                score++;
+            } else {
+                System.out.println("❌ Wrong! Correct answer: " + answers[i] + "\n");
+            }
+        }
+
+        System.out.println("🎉 Quiz Over! Your Score: " + score + "/" + questions.length);
+        sc.close();
+    }
+}
+
